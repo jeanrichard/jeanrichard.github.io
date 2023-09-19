@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Personal Blog</title>
+    <meta name="description" content="A Personal Blog template" />
+    <!--
+    <meta
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+      name="viewport"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    -->
+  </head>
+  <body>
+    <header>
+      <figure>
+        <img src="fixme" alt="Logo of my Personal Blog" />
+      </figure>
+      <h1>Personal Blog</h1>
+      <p class="tagline">Subtitle</p>
+    </header>
+
+    <nav role="navigation">
+      <h2>Navigation</h2>
+      <menu>
+        <li><a href="./index.html">Blog</a></li>
+        <li><a href="#">Archives</a></li>
+        <li><a href="#">Categories</a></li>
+        <li><a href="./about.html">About</a></li>
+        <li><a href="./subscribe.html">Subscribe</a></li>
+      </menu>
+
+      <form action="https://google.com/search" method="get">
+        <input type="hidden" name="q" value="site:mysite.com" />
+        <label for="site-search">Search this blog:</label>
+        <input
+          type="search"
+          name="q"
+          id="site-search"
+          placeholder="Search&hellip;"
+          maxlength="200"
+        />
+        <button type="submit" title="Search this blog now">Submit</button>
+      </form>
+    </nav>
+
+    <main>
+      <h2>Recent blog posts</h2>
+      <div id="recent-blog-posts">
+        <article>
+          <header>
+            <h3>Title Blog Post 3</h3>
+            <p>
+              Published on
+              <time datetime="2023-09-22">September 22, 2023</time> by
+              <span class="author-name">John Doe</span>
+            </p>
+            <p>Categories:</p>
+            <ul>
+              <li>tag1</li>
+              <li>tag2</li>
+            </ul>
+          </header>
+          <p>This is a brief preview of the blog post 1 content.</p>
+          <footer>
+            <a href="./posts/post-20230922-02.html">Continue reading</a>
+          </footer>
+        </article>
+
+        <article>
+          <header>
+            <h3>Title Blog Post 2</h3>
+            <p>
+              Published on
+              <time datetime="2023-09-22">September 22, 2023</time> by
+              <span class="author-name">John Doe</span>
+            </p>
+            <p>Categories:</p>
+            <ul>
+              <li>tag1</li>
+              <li>tag2</li>
+            </ul>
+          </header>
+          <p>This is a brief preview of the blog post 2 content.</p>
+          <footer>
+            <a href="./posts/post-20230922-01.html">Continue reading</a>
+          </footer>
+        </article>
+
+        <article>
+          <header>
+            <h3>Title Blog Post 1</h3>
+            <p>
+              Published on
+              <time datetime="2023-09-22">September 22, 2023</time> by
+              <span class="author-name">John Doe</span>
+            </p>
+            <p>Categories:</p>
+            <ul>
+              <li>tag1</li>
+              <li>tag2</li>
+            </ul>
+          </header>
+          <p>This is a brief preview of the blog post 3 content.</p>
+          <footer>
+            <a href="./posts/post-20230921-01.html">Continue reading</a>
+          </footer>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <nav>
+        <h2>Elsewhere:</h2>
+        <menu>
+          <li>
+            <a href="https://www.linkedin.com/in/erichard" target="_blank"
+              >LinkedIn</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/jeanrichard" target="_blank">GitHub</a>
+          </li>
+          <li><a href="./subscribe.html">Subscribe</a></li>
+        </menu>
+      </nav>
+      <p class="copyright">&copy; 2023 Author</p>
+      <p class="privacy-policy">
+        <a href="./legal/privacy-policy.html">Privacy Policy</a>
+      </p>
+    </footer>
+  </body>
+</html>
