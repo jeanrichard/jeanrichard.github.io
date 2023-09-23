@@ -1,0 +1,54 @@
+/* SIZE: Mobile and larger. */
+
+/* As of 2023-09, container queries are a rather recent addition and ar not
+supported by all browsers: https://caniuse.com/css-container-queries. */
+
+.main-nav-content h2 {
+  /* Remove heading. */
+  display: none;
+}
+
+.main-nav-content menu {
+  display: flex;
+  /* Make menu vertical. */
+  flex-direction: column;
+  padding: 0;
+  margin: 1rem 0;
+  gap: 1rem;
+}
+
+/* Menu items. */
+
+.main-nav-content li {
+  /* Remove bullets. */
+  list-style-type: none;
+}
+
+.main-nav-content li a {
+  color: inherit;
+  text-decoration: transparent;
+  text-decoration-thickness: 0.05em;
+}
+
+.main-nav-content li a.active {
+  text-decoration: underline;
+}
+
+.main-nav-content li a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+}
+
+/* SIZE: Tablet and larger. */
+
+@media (min-width: 800px) {
+  .main-nav-content menu {
+    /* Make menu horizontal. */
+    flex-direction: row;
+  }
+
+  .main-nav-content li.search-bar {
+    /* Move search bar to the right. */
+    margin-left: auto;
+  }
+}

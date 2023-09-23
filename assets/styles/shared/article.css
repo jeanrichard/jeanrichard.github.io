@@ -1,0 +1,61 @@
+/* SIZE: Mobile and larger. */
+
+.main-part-content {
+  padding: 1rem 0rem 1rem;
+}
+
+.article-layout {
+  max-width: 800px;
+  margin: auto;
+  text-align: justify;
+}
+
+/* Styling. */
+
+.article-text h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.article-text h3 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.article-text .publishing-details {
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.article-text figure {
+  margin: 0;
+}
+
+.article-text figure img {
+  /* The <img> element is inline. This causes a little gap between the image and
+  the caption, even with no margin. */
+  display: block;
+  width: 100%;
+  /* Rounded corners on the bottom. */
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+.article-text figure figcaption {
+  padding: 0.75rem 1rem;
+  /* Rounded corners on the bottom. */
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.article-footer {
+  padding: 0.75rem 1rem;
+  /* Rounded corners. */
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.article-footer p {
+  margin: 0;
+}

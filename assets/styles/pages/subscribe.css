@@ -1,0 +1,52 @@
+@import url(../shared/settings.css);
+@import url(../shared/main-nav.css);
+@import url(../shared/main.css);
+@import url(../shared/utils.css);
+@import url(../shared/article.css);
+
+.subscribe-newsletter-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  gap: 0.5rem;
+}
+
+.subscribe-newsletter-content legend {
+  display: none;
+}
+
+/* Begin: Hide the text and show the icon. */
+.input-box-button span.text {
+  display: none;
+}
+
+.input-box-button span.icon {
+  display: inline;
+}
+/* End.*/
+
+.subscribe-user-consent input[type='checkbox'] {
+  accent-color: var(--color-orange);
+  size: 80px;
+}
+
+.input-box-button span.text {
+  display: none;
+}
+
+/* SIZE: Tablet and larger. */
+
+@media (min-width: 800px) {
+  /* Begin: Show the text and hide the icon. */
+  .input-box-button span.text {
+    display: inline;
+  }
+
+  .input-box-button span.icon {
+    display: none;
+  }
+  /* End. */
+}

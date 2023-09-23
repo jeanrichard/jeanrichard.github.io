@@ -1,0 +1,77 @@
+@import url(../shared/settings.css);
+@import url(../shared/main-nav.css);
+@import url(../shared/main.css);
+@import url(../shared/utils.css);
+
+/* SIZE: Mobile and larger. */
+
+.main-part-content {
+  padding: 1rem 0rem 1rem;
+}
+
+/*
+ * Blog post previews as cards with a grid layout.
+ */
+
+.cards-layout {
+  display: grid;
+  align-items: stretch;
+  gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+}
+
+/*
+ * Blog post preview as card.
+ */
+
+.card-layout {
+  padding: 1rem;
+  /* Rounded corners. */
+  border-radius: 0.5rem;
+  box-shadow: 0 0.3rem 0.6rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-layout img {
+  /* Increase/decrease size as needed based on the width. */
+  width: 100%;
+  height: auto;
+}
+
+.card-layout .publishing-details {
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.card-layout .category {
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+.card-content {
+  text-align: justify;
+}
+
+/* SIZE: Tablet and larger. */
+@media (min-width: 800px) {
+  .main-part-content {
+    padding: 1rem 0rem 2rem;
+  }
+
+  .cards-layout {
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* SIZE: Laptop and desktop. */
+@media (min-width: 1200px) {
+  .main-part-content {
+    padding: 1rem 0rem 4rem;
+  }
+
+  .cards-layout {
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

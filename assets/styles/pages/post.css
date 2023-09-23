@@ -1,0 +1,10 @@
+@import url(../shared/settings.css);
+@import url(../shared/main-nav.css);
+@import url(../shared/main.css);
+@import url(../shared/utils.css);
+@import url(../shared/article.css);
+
+.category {
+  margin-top: 0.5rem;
+  text-align: right;
+}

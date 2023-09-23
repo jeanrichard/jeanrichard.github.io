@@ -3,83 +3,226 @@
   <head>
     <meta charset="utf-8" />
     <title>Personal Blog</title>
-    <meta name="description" content="A Personal Blog template" />
-    <!--
-    <meta
+    <meta name="description" content="A Personal Blog mockup" />
+    <!-- Reported as a critical accessibility issue. Disabling for now. -->
+    <!-- <meta
       content="width=device-width, initial-scale=1, maximum-scale=1"
       name="viewport"
+    /> -->
+    <link href="../assets/styles/pages/privacy-policy.css" rel="stylesheet" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
-    -->
+
+    <!-- Our project just needs Font Awesome Solid + Brands. -->
+    <link
+      href="../assets/fontawesome/css/fontawesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="../assets/fontawesome/css/brands.min.css" rel="stylesheet" />
+    <link href="../assets/fontawesome/css/solid.min.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-    <header>
-      <figure>
-        <img src="fixme" alt="Logo of my Personal Blog" />
-      </figure>
-      <h1>Personal Blog</h1>
-    </header>
+    <div class="main-container">
+      <header class="main-header">
+        <div class="main-header-content">
+          <img
+            src="../assets/icons/logo.svg"
+            alt="The logo of this Personal Blog is a cog wheel."
+            width="60"
+          />
+          <h1>Personal Blog</h1>
+          <p class="tagline">Perseverantia ad finem optatum</p>
+        </div>
+      </header>
 
-    <nav role="navigation">
-      <h2>Navigation</h2>
-      <menu>
-        <li><a href="../index.html">Blog</a></li>
-        <li><a href="fixme">Archives</a></li>
-        <li><a href="fixme">Categories</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../subscribe.html">Subscribe</a></li>
-      </menu>
-
-      <form action="https://google.com/search" method="get">
-        <input type="hidden" name="q" value="site:mysite.com" />
-        <label for="site-search">Search this blog:</label>
-        <input
-          type="search"
-          name="q"
-          id="site-search"
-          placeholder="Search&hellip;"
-          maxlength="200"
-        />
-        <button type="submit" title="Search this blog now">Submit</button>
-      </form>
-    </nav>
-
-    <main>
-      <article>
-        <h2>Privacy Policy</h2>
-        <p>
-          Last updated: <time datetime="2023-09-22">September 22, 2023</time>
-        </p>
-        <p>Lore ipsum dolores</p>
-
-        <h3>Subsection 1</h3>
-        <p>Lore ipsum dolores</p>
-        <p>Lore ipsum dolores</p>
-
-        <h3>Subsection 2</h3>
-        <p>Lore ipsum dolores</p>
-        <p>Lore ipsum dolores</p>
-        <p>Lore ipsum dolores</p>
-
-        <h3>Subsection 3</h3>
-        <p>Lore ipsum dolores</p>
-        <p>Lore ipsum dolores</p>
-      </article>
-    </main>
-
-    <footer>
-      <nav>
-        <h2>Elsewhere:</h2>
-        <menu>
-          <li><a href="fixme" target="_blank">LinkedIn</a></li>
-          <li><a href="fixme" target="_blank">GitHub</a></li>
-          <li><a href="../subscribe.html">Subscribe</a></li>
-        </menu>
+      <nav role="navigation" class="main-nav">
+        <div class="main-nav-content">
+          <h2>Navigation</h2>
+          <menu>
+            <li><a href="../index.html">Blog</a></li>
+            <li><a href="#">Archives</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../subscribe.html">Subscribe</a></li>
+            <li class="search-bar">
+              <form action="https://google.com/search" method="get">
+                <input type="hidden" name="q" value="site:mysite.com" />
+                <div class="input-box">
+                  <label for="site-search">Search this blog:</label>
+                  <input
+                    type="search"
+                    name="q"
+                    id="site-search"
+                    placeholder="Search&hellip;"
+                    maxlength="200"
+                    class="input-box-input"
+                    required
+                  /><button
+                    type="submit"
+                    title="Search this blog now"
+                    class="input-box-button"
+                  >
+                    <span class="fa-solid fa-search" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </form>
+            </li>
+          </menu>
+        </div>
       </nav>
-      <p class="copyright">&copy; 2023 Author</p>
-      <p class="privacy-policy">
-        <a href="./privacy-policy.html">Privacy Policy</a>
-      </p>
-    </footer>
+
+      <main class="main-content">
+        <article>
+          <header>
+            <h2>Privacy Policy</h2>
+            <p class="publishing-details">
+              <strong>
+                Last updated:
+                <time datetime="2023-09-22">September 22, 2023</time>
+              </strong>
+            </p>
+          </header>
+
+          <p>
+            Pellentesque vitae lorem eu est varius condimentum. Cras id gravida
+            libero, vel ornare eros. Phasellus laoreet nec diam sed efficitur.
+            Nunc scelerisque tristique orci nec sodales. Curabitur volutpat nibh
+            orci, a ultricies tellus vestibulum vitae. Nunc augue odio,
+            pellentesque eget commodo iaculis, porta sit amet velit. Nunc
+            blandit sed lorem eu lobortis.
+          </p>
+
+          <h3>1.&nbsp;Nunc ornare ullamcorper</h3>
+
+          <p>
+            Fusce eget tincidunt mauris. Cras lacinia tortor a pharetra luctus.
+            Aenean et risus sed erat rhoncus blandit. Morbi vel pulvinar quam.
+            Nulla non magna sed tortor semper condimentum non quis nisi. Morbi
+            convallis fringilla elit ut vestibulum. Pellentesque quis orci
+            laoreet, dictum tellus at, scelerisque enim. Maecenas varius nec
+            quam id sagittis.
+          </p>
+
+          <p>
+            Sed in sem aliquet, aliquet nibh vitae, commodo augue. Aliquam erat
+            volutpat. Mauris luctus massa in dolor ornare, vitae tempor nisi
+            laoreet. Praesent dignissim dignissim orci et dapibus. Maecenas vel
+            commodo ligula. Quisque pulvinar lobortis ante nec dictum. Duis
+            condimentum eros velit. Cras porta nec lacus ut venenatis. Morbi sit
+            amet lobortis purus. Nulla semper dignissim enim, scelerisque
+            euismod risus pellentesque vel. In hac habitasse platea dictumst.
+            Donec consequat urna at metus aliquet interdum. Proin eleifend
+            pretium turpis quis vestibulum. Vestibulum elementum magna libero,
+            et euismod lacus vestibulum id. Sed varius sem vel convallis luctus.
+            Etiam ut consectetur sapien.
+          </p>
+
+          <h3>2.&nbsp;Sed gravida enim</h3>
+
+          <p>
+            Nulla facilisi. Nam posuere molestie tincidunt. Vestibulum pulvinar
+            nulla et enim vehicula rutrum. Integer elementum quam eu leo commodo
+            blandit. Fusce commodo ligula augue. Fusce sagittis eget dolor vitae
+            euismod. Etiam vitae libero nisl. Fusce gravida ac justo sit amet
+            tincidunt. Orci varius natoque penatibus et magnis dis parturient
+            montes, nascetur ridiculus mus. Aenean vel ligula lorem. Ut lacus
+            ligula, facilisis nec dui eget, sollicitudin varius dolor. Nulla
+            quis lorem pretium, scelerisque nulla id, dapibus nisi. Sed aliquet,
+            ex at laoreet sodales, diam sem aliquam justo, id varius elit neque
+            in nulla.
+          </p>
+
+          <p>
+            Donec tincidunt dictum dolor, in tempor lectus blandit at. Nullam
+            placerat interdum enim, nec sollicitudin lacus convallis quis.
+            Praesent odio quam, mattis vel mauris eu, semper pharetra felis. Sed
+            placerat vehicula ipsum. Cras molestie rhoncus augue, non posuere
+            felis hendrerit id. Maecenas et nunc sed metus lacinia lacinia non
+            vel quam. Donec dui mi, dignissim hendrerit lobortis sed, fringilla
+            quis felis. Sed laoreet dapibus dui. Quisque tempor et odio eget
+            pretium.
+          </p>
+
+          <p>
+            Cras in urna sed ipsum sodales tincidunt at vel nisi. Morbi placerat
+            pharetra molestie. Duis condimentum venenatis libero. Cras et nisi
+            elit. Cras dictum eget lorem vitae lobortis. Cras lobortis sagittis
+            venenatis. Integer luctus convallis felis non malesuada.
+          </p>
+
+          <h3>3.&nbsp;Nulla laoreet eu</h3>
+
+          <p>
+            Proin ultricies arcu suscipit leo tempus, at condimentum mauris
+            mollis. Aenean dictum consectetur erat, et porttitor ex egestas non.
+            Aliquam pretium et risus ac ullamcorper. Proin pretium finibus
+            risus, nec varius libero iaculis volutpat. Nunc est massa, convallis
+            eget quam in, hendrerit rhoncus nulla. In ultrices lectus eu felis
+            venenatis posuere. Aliquam id luctus nisi, eget cursus tortor. Sed
+            maximus ultricies sapien, elementum facilisis nunc vestibulum ac.
+            Etiam quis tristique urna. Proin orci sapien, cursus eget tellus
+            sed, hendrerit feugiat diam. Pellentesque hendrerit elit a est
+            eleifend auctor. Sed faucibus nibh eu purus dictum, eu posuere neque
+            imperdiet.
+          </p>
+
+          <p>
+            Suspendisse ullamcorper cursus elit, vitae euismod nulla mollis et.
+            Praesent sit amet molestie leo, ultrices porta sem. Vivamus sed
+            aliquam nunc. Mauris at fermentum leo, ullamcorper finibus nunc.
+            Aliquam enim ante, suscipit a arcu quis, pulvinar dapibus libero.
+            Maecenas eleifend purus mauris, vel commodo enim ornare in. Morbi
+            dignissim pulvinar augue, eget pharetra justo malesuada id. Mauris
+            viverra tellus nec orci pellentesque, vitae euismod sem sagittis.
+            Nunc consequat rhoncus ante id tincidunt. Praesent id enim libero.
+          </p>
+        </article>
+      </main>
+
+      <footer class="main-footer">
+        <div class="main-footer-content">
+          <nav class="elsewhere-nav">
+            <h2>Elsewhere:</h2>
+            <menu>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/erichard"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                  ><span class="fa-brands fa-linkedin" aria-hidden="true"></span
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/jeanrichard"
+                  target="_blank"
+                  aria-label="GitHub"
+                  ><span class="fa-brands fa-github" aria-hidden="true"></span
+                ></a>
+              </li>
+              <li><a href="../subscribe.html">Subscribe</a></li>
+            </menu>
+          </nav>
+          <p class="legal-mentions">
+            <span class="copyright">&copy; 2023 Author</span>
+            <span class="privacy-policy"
+              ><a href="../legal/privacy-policy.html">Privacy Policy</a></span
+            >
+          </p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

@@ -3,132 +3,242 @@
   <head>
     <meta charset="utf-8" />
     <title>Personal Blog</title>
-    <meta name="description" content="A Personal Blog template" />
-    <!--
-    <meta
+    <meta name="description" content="A Personal Blog mockup" />
+    <!-- Reported as a critical accessibility issue. Disabling for now. -->
+    <!-- <meta
       content="width=device-width, initial-scale=1, maximum-scale=1"
       name="viewport"
+    /> -->
+    <link href="./assets/styles/pages/blog.css" rel="stylesheet" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
-    -->
+
+    <!-- Our project just needs Font Awesome Solid + Brands. -->
+    <link
+      href="./assets/fontawesome/css/fontawesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="./assets/fontawesome/css/brands.min.css" rel="stylesheet" />
+    <link href="./assets/fontawesome/css/solid.min.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-    <header>
-      <figure>
-        <img src="fixme" alt="Logo of my Personal Blog" />
-      </figure>
-      <h1>Personal Blog</h1>
-      <p class="tagline">Subtitle</p>
-    </header>
+    <div class="main-container">
+      <header class="main-header-container">
+        <div class="main-header-content">
+          <img
+            src="./assets/icons/logo.svg"
+            alt="The logo of this Personal Blog is a cog wheel."
+          />
+          <h1>Personal Blog</h1>
+          <p class="tagline">Perseverantia ad finem optatum</p>
+        </div>
+      </header>
 
-    <nav role="navigation">
-      <h2>Navigation</h2>
-      <menu>
-        <li><a href="./index.html">Blog</a></li>
-        <li><a href="#">Archives</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./subscribe.html">Subscribe</a></li>
-      </menu>
-
-      <form action="https://google.com/search" method="get">
-        <input type="hidden" name="q" value="site:mysite.com" />
-        <label for="site-search">Search this blog:</label>
-        <input
-          type="search"
-          name="q"
-          id="site-search"
-          placeholder="Search&hellip;"
-          maxlength="200"
-        />
-        <button type="submit" title="Search this blog now">Submit</button>
-      </form>
-    </nav>
-
-    <main>
-      <h2>Recent blog posts</h2>
-      <div id="recent-blog-posts">
-        <article>
-          <header>
-            <h3>Title Blog Post 3</h3>
-            <p>
-              Published on
-              <time datetime="2023-09-22">September 22, 2023</time> by
-              <span class="author-name">John Doe</span>
-            </p>
-            <p>Categories:</p>
-            <ul>
-              <li>tag1</li>
-              <li>tag2</li>
-            </ul>
-          </header>
-          <p>This is a brief preview of the blog post 1 content.</p>
-          <footer>
-            <a href="./posts/post-20230922-02.html">Continue reading</a>
-          </footer>
-        </article>
-
-        <article>
-          <header>
-            <h3>Title Blog Post 2</h3>
-            <p>
-              Published on
-              <time datetime="2023-09-22">September 22, 2023</time> by
-              <span class="author-name">John Doe</span>
-            </p>
-            <p>Categories:</p>
-            <ul>
-              <li>tag1</li>
-              <li>tag2</li>
-            </ul>
-          </header>
-          <p>This is a brief preview of the blog post 2 content.</p>
-          <footer>
-            <a href="./posts/post-20230922-01.html">Continue reading</a>
-          </footer>
-        </article>
-
-        <article>
-          <header>
-            <h3>Title Blog Post 1</h3>
-            <p>
-              Published on
-              <time datetime="2023-09-22">September 22, 2023</time> by
-              <span class="author-name">John Doe</span>
-            </p>
-            <p>Categories:</p>
-            <ul>
-              <li>tag1</li>
-              <li>tag2</li>
-            </ul>
-          </header>
-          <p>This is a brief preview of the blog post 3 content.</p>
-          <footer>
-            <a href="./posts/post-20230921-01.html">Continue reading</a>
-          </footer>
-        </article>
-      </div>
-    </main>
-
-    <footer>
-      <nav>
-        <h2>Elsewhere:</h2>
-        <menu>
-          <li>
-            <a href="https://www.linkedin.com/in/erichard" target="_blank"
-              >LinkedIn</a
-            >
-          </li>
-          <li>
-            <a href="https://github.com/jeanrichard" target="_blank">GitHub</a>
-          </li>
-          <li><a href="./subscribe.html">Subscribe</a></li>
-        </menu>
+      <nav role="navigation" class="main-nav-container">
+        <div class="main-nav-content">
+          <h2>Navigation</h2>
+          <menu>
+            <li><a href="./index.html" class="active">Blog</a></li>
+            <li><a href="#">Archives</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./subscribe.html">Subscribe</a></li>
+            <li class="search-bar">
+              <form action="https://google.com/search" method="get">
+                <input type="hidden" name="q" value="site:mysite.com" />
+                <div class="input-box">
+                  <label for="site-search">Search this blog:</label>
+                  <input
+                    type="search"
+                    name="q"
+                    id="site-search"
+                    placeholder="Search&hellip;"
+                    maxlength="200"
+                    class="input-box-input"
+                    required
+                  /><button
+                    type="submit"
+                    title="Search this blog now"
+                    class="input-box-button"
+                  >
+                    <span class="fa-solid fa-search" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </form>
+            </li>
+          </menu>
+        </div>
       </nav>
-      <p class="copyright">&copy; 2023 Author</p>
-      <p class="privacy-policy">
-        <a href="./legal/privacy-policy.html">Privacy Policy</a>
-      </p>
-    </footer>
+
+      <main class="main-part-container">
+        <div class="main-part-content">
+          <p>Welcome to my personal blog.</p>
+          <h2>Recent blog posts</h2>
+          <div class="cards-layout">
+            <article class="card-layout card-text">
+              <header>
+                <!-- Use small resolution. -->
+                <a
+                  href="./posts/post-20230922-02.html"
+                  aria-label="Click the image or the link at end of the preview to continue reading."
+                >
+                  <img
+                    src="./assets/images/lake-5933622_640.jpg"
+                    alt="Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+                  />
+                </a>
+                <p class="publishing-details">
+                  Published on
+                  <span class="published-date"
+                    ><time datetime="2023-09-22">2023-09-22</time></span
+                  >
+                  by
+                  <span class="author">Etienne Richard</span>
+                  <br />
+                  (last updated on
+                  <span class="last-updated-time"
+                    ><time datetime="2023-09-23">2023⁻09-23</time></span
+                  >)
+                </p>
+                <p class="category">
+                  <span class="category-label">Category: </span>
+                  <span class="category-name">category1</span>
+                </p>
+                <h3>Mauris sed eros congue</h3>
+              </header>
+              <p class="card-content">
+                Donec ex arcu, ornare vestibulum pellentesque sit amet,
+                condimentum non justo. Integer a lorem interdum, auctor risus
+                ut, porttitor orci. Sed aliquam at lorem in egestas. Phasellus
+                eget metus tincidunt justo convallis vehicula sit amet a elit.
+                In aliquet est.
+              </p>
+              <footer>
+                <a href="./posts/post-20230922-02.html">Continue reading…</a>
+              </footer>
+            </article>
+
+            <article class="card-layout card-text">
+              <header>
+                <!-- Use small resolution. -->
+                <a
+                  href="./posts/post-20230922-01.html"
+                  aria-label="Click the image or the link at end of the preview to continue reading."
+                >
+                  <img
+                    src="./assets/images/mountains-1516733_640.jpg"
+                    alt="Vestibulum vel leo vel massa eleifend laoreet."
+                /></a>
+                <p class="publishing-details">
+                  Published on
+                  <span class="published-date"
+                    ><time datetime="2023-09-22">2023-09-22</time></span
+                  >
+                  by
+                  <span class="author">Etienne Richard</span>
+                </p>
+                <p class="category">
+                  <span class="category-label">Category: </span>
+                  <span class="category-name">category2</span>
+                </p>
+                <h3>Aenean aliquet leo ut tincidunt pulvinar</h3>
+              </header>
+              <p class="card-content">
+                Morbi porta, augue id malesuada efficitur, eros leo pulvinar
+                massa, in pretium leo sem eu ante. Donec dignissim eget magna id
+                ultricies. Duis nec felis dui. In hac habitasse platea dictumst.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                eget ante a nunc lacinia euismod. Donec ac ultrices enim.
+              </p>
+              <footer>
+                <a href="./posts/post-20230922-01.html">Continue reading…</a>
+              </footer>
+            </article>
+
+            <article class="card-layout card-text">
+              <header>
+                <!-- Use small resolution. -->
+                <a
+                  href="./posts/post-20230921-01.html"
+                  aria-label="Click the image or the link at end of the preview to continue reading."
+                >
+                  <img
+                    src="./assets/images/coffee-2306471_640.jpg"
+                    alt="Nulla sit amet euismod augue."
+                /></a>
+                <p class="publishing-details">
+                  Published on
+                  <span class="published-date"
+                    ><time datetime="2023-09-21">2023-09-21</time></span
+                  >
+                  by
+                  <span class="author">Etienne Richard</span>
+                </p>
+                <p class="category">
+                  <span class="category-label">Category: </span>
+                  <span class="category-name">category1</span>
+                </p>
+                <h3>Aliquam vitae feugiat neque</h3>
+              </header>
+              <p class="card-content">
+                Aliquam erat volutpat. Sed sed bibendum massa. Proin ut
+                porttitor justo, vitae scelerisque metus. Curabitur eros enim,
+                congue ut vehicula id, fringilla sit amet massa. Cras sem nibh,
+                interdum quis purus vitae, sodales accumsan justo. Donec a velit
+                quis nulla molestie pulvinar eget pharetra dui.
+              </p>
+              <footer>
+                <a href="./posts/post-20230921-01.html">Continue reading…</a>
+              </footer>
+            </article>
+          </div>
+        </div>
+      </main>
+
+      <footer class="main-footer-container">
+        <div class="main-footer-content">
+          <nav class="elsewhere-nav">
+            <h2>Elsewhere:</h2>
+            <menu>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/erichard"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                  ><span class="fa-brands fa-linkedin" aria-hidden="true"></span
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/jeanrichard"
+                  target="_blank"
+                  aria-label="GitHub"
+                  ><span class="fa-brands fa-github" aria-hidden="true"></span
+                ></a>
+              </li>
+              <li><a href="./subscribe.html">Subscribe</a></li>
+            </menu>
+          </nav>
+          <p class="legal-mentions">
+            <span class="copyright">&copy; 2023 Author</span>
+            <span class="privacy-policy"
+              ><a href="./legal/privacy-policy.html">Privacy Policy</a></span
+            >
+          </p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

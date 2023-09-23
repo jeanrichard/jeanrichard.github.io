@@ -3,96 +3,179 @@
   <head>
     <meta charset="utf-8" />
     <title>Personal Blog</title>
-    <meta name="description" content="A Personal Blog template" />
-    <!--
-    <meta
+    <meta name="description" content="A Personal Blog mockup" />
+    <!-- Reported as a critical accessibility issue. Disabling for now. -->
+    <!-- <meta
       content="width=device-width, initial-scale=1, maximum-scale=1"
       name="viewport"
+    /> -->
+    <link href="./assets/styles/pages/subscribe.css" rel="stylesheet" />
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/style.css" />
-    -->
+
+    <!-- Our project just needs Font Awesome Solid + Brands. -->
+    <link
+      href="./assets/fontawesome/css/fontawesome.min.css"
+      rel="stylesheet"
+    />
+    <link href="./assets/fontawesome/css/brands.min.css" rel="stylesheet" />
+    <link href="./assets/fontawesome/css/solid.min.css" rel="stylesheet" />
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body>
-    <header>
-      <figure>
-        <img src="fixme" alt="Logo of my Personal Blog" />
-      </figure>
-      <h1>Personal Blog</h1>
-    </header>
-
-    <nav role="navigation">
-      <h2>Navigation</h2>
-      <menu>
-        <li><a href="./index.html">Blog</a></li>
-        <li><a href="#">Archives</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="./about.html">About</a></li>
-        <li><a href="./subscribe.html">Subscribe</a></li>
-      </menu>
-
-      <form action="https://google.com/search" method="get">
-        <input type="hidden" name="q" value="site:mysite.com" />
-        <label for="site-search">Search this blog:</label>
-        <input
-          type="search"
-          name="q"
-          id="site-search"
-          placeholder="Search&hellip;"
-          maxlength="200"
-        />
-        <button type="submit" title="Search this blog now">Submit</button>
-      </form>
-    </nav>
-
-    <main>
-      <h2>Subscribe</h2>
-
-      <p>Lorem ipsum dolores</p>
-
-      <form action="#" method="post">
-        <fieldset>
-          <legend>Subscribe to our Newsletter</legend>
-          <label for="site-search"></label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email address&hellip;"
-            maxlength="200"
-            required
+    <div class="main-container">
+      <header class="main-header-container">
+        <div class="main-header-content">
+          <img
+            src="./assets/icons/logo.svg"
+            alt="The logo of this Personal Blog is a cog wheel."
           />
-          <button type="submit" title="Subscribe to our Newsletter">
-            Subscribe
-          </button>
-          <br />
-          <input type="checkbox" name="consent" value="yes" required />
-          <label for="consent"
-            >I consent to being contacted by email as described in our
-            <a href="fixme">Privacy Policy</a>.</label
-          >
-        </fieldset>
-      </form>
-    </main>
+          <h1>Personal Blog</h1>
+          <p class="tagline">Perseverantia ad finem optatum</p>
+        </div>
+      </header>
 
-    <footer>
-      <nav>
-        <h2>Elsewhere:</h2>
-        <menu>
-          <li>
-            <a href="https://www.linkedin.com/in/erichard" target="_blank"
-              >LinkedIn</a
-            >
-          </li>
-          <li>
-            <a href="https://github.com/jeanrichard" target="_blank">GitHub</a>
-          </li>
-          <li><a href="./subscribe.html">Subscribe</a></li>
-        </menu>
+      <nav role="navigation" class="main-nav-container">
+        <div class="main-nav-content">
+          <h2>Navigation</h2>
+          <menu>
+            <li><a href="./index.html">Blog</a></li>
+            <li><a href="#">Archives</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./subscribe.html" class="active">Subscribe</a></li>
+            <li class="search-bar">
+              <form action="https://google.com/search" method="get">
+                <input type="hidden" name="q" value="site:mysite.com" />
+                <div class="input-box">
+                  <label for="site-search">Search this blog:</label>
+                  <input
+                    type="search"
+                    name="q"
+                    id="site-search"
+                    placeholder="Search&hellip;"
+                    maxlength="200"
+                    class="input-box-input"
+                    required
+                  /><button
+                    type="submit"
+                    title="Search this blog now"
+                    class="input-box-button"
+                  >
+                    <span class="fa-solid fa-search" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </form>
+            </li>
+          </menu>
+        </div>
       </nav>
-      <p class="copyright">&copy; 2023 Author</p>
-      <p class="privacy-policy">
-        <a href="./legal/privacy-policy.html">Privacy Policy</a>
-      </p>
-    </footer>
+
+      <main class="main-part-container">
+        <div class="main-part-content">
+          <article class="article-layout article-text">
+            <h2>Subscribe</h2>
+
+            <p>
+              Nullam nec vulputate erat. Mauris ac erat mauris. Cras efficitur
+              nunc sit amet convallis consectetur. Praesent a eros molestie,
+              vehicula nisl id, cursus urna. Cras egestas scelerisque orci sit
+              amet ultricies. Aenean egestas congue facilisis. Morbi at tortor
+              tortor. Vivamus facilisis velit vitae ligula fermentum gravida.
+              Curabitur nec accumsan purus, vitae consequat felis.
+            </p>
+
+            <form action="#" method="post" class="subscribe-newsletter">
+              <fieldset class="subscribe-newsletter-content card-text">
+                <legend>Subscribe to our Newsletter</legend>
+                <div class="subscribe-user-email input-box">
+                  <label for="email"></label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Email address&hellip;"
+                    maxlength="200"
+                    autocomplete="email"
+                    class="input-box-input"
+                    required
+                  /><button
+                    type="submit"
+                    title="Subscribe to our Newsletter"
+                    class="input-box-button"
+                  >
+                    <span class="text">Subscribe</span
+                    ><span class="icon"
+                      ><span
+                        class="fa-solid fa-envelope"
+                        aria-hidden="true"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div class="subscribe-user-consent">
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    id="consent"
+                    value="yes"
+                    required
+                  />
+                  <label for="consent"
+                    >I consent to being contacted by email as described in our
+                    <a href="./legal/privacy-policy.html">Privacy Policy</a
+                    >.</label
+                  >
+                </div>
+              </fieldset>
+            </form>
+          </article>
+        </div>
+      </main>
+
+      <footer class="main-footer-container">
+        <div class="main-footer-content">
+          <nav class="elsewhere-nav">
+            <h2>Elsewhere:</h2>
+            <menu>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/erichard"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                  ><span class="fa-brands fa-linkedin" aria-hidden="true"></span
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="https://github.com/jeanrichard"
+                  target="_blank"
+                  aria-label="GitHub"
+                  ><span class="fa-brands fa-github" aria-hidden="true"></span
+                ></a>
+              </li>
+              <li><a href="./subscribe.html">Subscribe</a></li>
+            </menu>
+          </nav>
+          <p class="legal-mentions">
+            <span class="copyright">&copy; 2023 Author</span>
+            <span class="privacy-policy"
+              ><a href="./legal/privacy-policy.html">Privacy Policy</a></span
+            >
+          </p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>

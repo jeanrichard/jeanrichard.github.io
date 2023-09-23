@@ -1,0 +1,182 @@
+/*
+ * Defaults.
+ */
+
+html {
+  min-width: 400px;
+  /* Needed to be able to keep the footer at the bottom of the page even if the
+  page has little content. */
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  /* Needed to be able to keep the footer at the bottom of the page even if the
+  page has little content. */
+  height: 100%;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+/*
+ * Main container.
+ */
+
+/*
+NOTE: For the main header/navigation/footer, we want the boxes to cover all 3
+columns while we want the actual content inside those boxes to cover only the
+center column.
+*/
+.main-container {
+  display: grid;
+  height: 100%;
+  grid-template-areas:
+    'main-header main-header main-header'
+    'main-nav    main-nav    main-nav'
+    '.           main-cont   .'
+    'main-footer main-footer main-footer';
+  grid-template-columns: 0.05fr 0.9fr 0.05fr;
+  grid-template-rows: auto auto 1fr auto;
+}
+
+/* 
+ * Main header.
+ */
+
+/* General layout. */
+
+.main-header-container {
+  display: grid;
+  margin: 0;
+  background-color: var(--color-header-bg);
+  color: var(--color-header-fg);
+  grid-area: main-header;
+  grid-template-columns: inherit;
+}
+
+.main-header-content {
+  grid-area: 1 / 2 / span 1 / span 1;
+}
+
+/* Styling. */
+
+.main-header-content img {
+  position: absolute;
+  width: 3.75rem;
+  margin: 1.5rem 0.5rem 0.5rem;
+}
+
+.main-header-content h1 {
+  margin: 1.5rem 1.5rem 0 5rem;
+}
+
+.main-header-content .tagline {
+  margin: 0 2.5rem 1.5rem;
+  font-size: 1.75rem;
+  font-style: italic;
+}
+
+/*
+ * Main navigation bar.
+ */
+
+/* General layout (other rules: see 'main-nav.css'). */
+
+.main-nav-container {
+  display: grid;
+  margin: 0;
+  background-color: var(--color-main-nav-bg);
+  color: var(--color-main-nav-fg);
+  grid-area: main-nav;
+  grid-template-columns: inherit;
+}
+
+.main-nav-content {
+  grid-area: 2 / 2 / span 1 / span 1;
+}
+
+/*
+ * Main content.
+ */
+
+.main-part-container {
+  grid-area: main-cont;
+}
+
+/*
+ * Main footer.
+ */
+
+/* General layout. */
+
+.main-footer-container {
+  display: grid;
+  align-self: end;
+  margin-top: auto;
+  background-color: var(--color-main-footer-bg);
+  color: var(--color-main-footer-fg);
+  grid-area: main-footer;
+  grid-template-columns: inherit;
+}
+
+.main-footer-content {
+  grid-area: 2 / 2 / span 1 / span 1;
+  text-align: center;
+}
+
+/* Styling. */
+
+/* Main footer / Elsewhere. */
+
+.elsewhere-nav h2 {
+  /* Remove heading. */
+  display: none;
+}
+
+.elsewhere-nav menu {
+  padding: 0;
+  margin: 1rem 0 0.5rem;
+}
+
+.elsewhere-nav li {
+  display: inline;
+  padding: 0 0.25em;
+  /* Remove bullets. */
+  list-style-type: none;
+}
+
+.elsewhere-nav li a {
+  color: inherit;
+  text-decoration: transparent;
+  text-decoration-thickness: 0.05em;
+}
+
+.elsewhere-nav li a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+}
+
+/* Main footer / Legal mentions. */
+
+.legal-mentions {
+  margin: 0.5rem 0 1rem;
+  color: white;
+}
+
+.legal-mentions a {
+  color: inherit;
+}

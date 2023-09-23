@@ -1,0 +1,16 @@
+{
+  "name": "udacity-fewd23-course1-project",
+  "version": "1.0.0",
+  "description": "This repository contains the code for Project 1 — _Personal Blog Website_ of the Udacity Nanodegree _Front End Web Developer_ (2023).",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "stylelint": "^15.10.3",
+    "stylelint-config-idiomatic-order": "^9.0.0",
+    "stylelint-config-standard": "^34.0.0"
+  }
+}

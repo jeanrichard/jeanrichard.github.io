@@ -1,0 +1,14 @@
+@import url(../shared/settings.css);
+@import url(../shared/main-nav.css);
+@import url(../shared/main.css);
+@import url(../shared/utils.css);
+@import url(../shared/article.css);
+
+.article-text img.portrait {
+  display: block;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 10rem;
+  margin: 2rem auto;
+  object-fit: cover;
+}

@@ -1,0 +1,34 @@
+:root {
+  /*
+   * Fonts.
+   */
+
+  font-family: 'Open Sans', sans-serif;
+
+  /*
+   * Colors.
+   */
+
+  /* Color palette. */
+  --color-grey: #bdc4cb;
+  --color-dark-grey: #262121;
+  --color-brown: #7c6b65;
+  --color-orange: #f2800a;
+  --color-light-orange: #efa94d;
+
+  /* Main header. */
+  --color-header-bg: var(--color-grey);
+  --color-header-fg: var(--color-dark-grey);
+
+  /* Main navigation. */
+  --color-main-nav-bg: var(--color-dark-grey);
+  --color-main-nav-fg: var(--color-orange);
+
+  /* Main footer. */
+  --color-main-footer-bg: var(--color-dark-grey);
+  --color-main-footer-fg: var(--color-orange);
+
+  /* Cards. */
+  --color-card-bg: var(--color-brown);
+  --color-card-fg: white;
+}

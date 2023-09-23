@@ -1,0 +1,121 @@
+/*
+ * STYLE: article text.
+ */
+
+.article-text a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-orange);
+  text-decoration-thickness: 0.05em;
+}
+
+.article-text a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-orange);
+  text-decoration-thickness: 0.1em;
+}
+
+/*
+ * STYLE: card text.
+ */
+
+.card-text {
+  background: var(--color-brown);
+  color: white;
+}
+
+.card-text a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-orange);
+  text-decoration-thickness: 0.05em;
+}
+
+.card-text a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--color-orange);
+  text-decoration-thickness: 0.1em;
+}
+
+/*
+ * COMPONENT: Category label.
+ */
+
+.category-label {
+  display: none;
+}
+
+.category-name {
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+  border-radius: 1.25em;
+  background-color: var(--color-orange);
+  color: var(--color-dark-grey);
+  font-size: 0.9rem;
+}
+
+/*
+ * COMPONENT: Input-box (input + button).
+ */
+
+.input-box label {
+  /* Remove label. */
+  display: none;
+}
+
+.input-box-input {
+  padding: 0.25em 0.75em;
+  border: none;
+  margin: 0;
+  border-bottom-left-radius: 1em;
+  border-top-left-radius: 1em;
+  font-size: inherit;
+}
+
+.input-box-input:focus {
+  /* Remove the outline that appears when brought into focus (e.g., by
+  clicking). */
+  outline: none;
+}
+
+.input-box-button {
+  padding: 0.25em 0.75em;
+  border: none;
+  margin: 0;
+  border-bottom-right-radius: 1em;
+  border-top-right-radius: 1em;
+  font-size: inherit;
+}
+
+/*
+ * COMPONENT: Fancy quote.
+ */
+
+blockquote.fancy-quote {
+  padding: 1rem;
+  border-left: solid var(--color-orange) 0.5em;
+  margin: 1rem;
+  background-color: var(--color-grey);
+  color: var(--color-dark-grey);
+  quotes: '“' '”' "'" "'";
+}
+
+blockquote.fancy-quote::before {
+  color: var(--color-orange);
+  color: white;
+  content: open-quote;
+  content: open-quote;
+  font-size: 3em;
+  line-height: 0.1em;
+  vertical-align: -0.3em;
+}
+
+blockquote.fancy-quote::after {
+  color: var(--color-orange);
+  color: white;
+  content: close-quote;
+  content: close-quote;
+  font-size: 3em;
+  line-height: 0.1em;
+  vertical-align: -0.6em;
+}
