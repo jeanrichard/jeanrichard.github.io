@@ -124,3 +124,14 @@ I managed to get a working setup using the VS Code [Dev Containers extension](ht
    # Fix violations:
    npx stylelint --fix "./assets/styles/**/*.css"
    ```
+
+## Miscellaneous
+
+Assuming that that site had been registered e.g, with Google Search, the following change to the search bar would allow to piggy back on the search engine:
+
+```html
+<form action="https://google.com/search" method="get">
+  <input type="hidden" name="q" value="site:https://jeanrichard.github.io/" />
+  <!-- ... omitted ... -->
+</form>
+```
