@@ -18,6 +18,7 @@ Content:
     - [2.2.2. Approach 2 — Intersection Observer API and dummy element](#back-to-top-button-approach-2)
     - [2.2.3. Comparison of approaches](#back-to-top-button-comparison-of-approaches)
     - [2.2.4. References](#back-to-top-button-references)
+  - [2.3. Collapsible sections](#collapsible-sections)
 - [3. Sources and assets](#sources-and-assets)
 - [4. Additional references](#additional-references)
 - [5. Tools used](#tools-used)
@@ -86,7 +87,7 @@ In the following diagram, we use the same conventions as above for the page, the
 
 The 2 edge cases described above for the active line also apply here.
 
-There is one more case we need to take care of: if we want all sections to be active at some point, the width $w$ of the band should not exceed the height of the shortest section. Here, since the CSS property `min-height: 80vh;` applies to all sections, we have a lower bound on the height of the shortest section. We can then use `window.innerHeight` as an approximation for `vh`, and make sure that $w$ is less than or equal to `0.8 * window.innerHeight`.
+There is one more case we need to take care of: if we want all sections to be active at some point, the width $w$ of the band should not exceed the height of the shortest section. Here, since the CSS property `min-height: 40vh;` applies to all sections, we have a lower bound on the height of the shortest section. We can then use `window.innerHeight` as an approximation for `vh`, and make sure that $w$ is less than or equal to `0.4 * window.innerHeight`.
 
 <a id="active-section-approach-2"></a>
 
@@ -202,6 +203,35 @@ If we had to choose, we would use Approach 1 for its combination of simplicity a
 We were inspired by:
 
 - [How To - Scroll Back To Top Button Semantic HTML](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp) ([W3Schools](https://www.w3schools.com/))
+
+<a id="collapsible-sections"></a>
+
+### 2.3. Design notes — Collapsible sections
+
+#### Description
+
+We basically use a button and some JavaScript to update the `max-height` property of the content. As a built-in DOM element, the button provides good accessibility, and we add some `aria-...` attributes to improve the accessibility of the whole setup. We were inspired by a few online resources, see the [References](#collapsible-sections-references) below.
+
+While looking for existing options, we found and decided not to use the following options:
+
+- [`<details>`: The Details disclosure element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details).
+  **Reason for not using:** Putting aside the fact that the goal of this project is to manipulate the DOM with JavaScript, we were not sure if the semantic of the `<details>` element is appropriate in the context of a Landing Page. After all, the content of the sections is not a detail, it is the most important part.
+- There are also many blogs posts, etc. demonstrating how to implement a collapsible using only CSS.
+  **Reason for not using:** Again, putting aside the fact that the goal of this project is to manipulate the DOM with JavaScript, those solutions are actually rather involved and/or rely on very specific behavior of DOM elements (e.g., the fact that clicking on the label attached to a checkbox can be used to check/uncheck the box). Another concern was accessibility.
+
+🔧 What could be improved:
+
+- When collapsed, the section should show a preview of the content (e.g., the first 100 characters).
+- Replacing `max-height: 100%;` by the computed height (in `px`) of the content would make it possible to have an animation when collapsing/expanding a section. This would force us to handle the `resize` event, though. Otherwise, if the user reduces the width of the browser window while the section is expanded, the reflow may increase the height of the content to the points that it overflows.
+
+<a id="collapsible-sections-references"></a>
+
+#### References
+
+We were inspired by the following sources:
+
+- [How To - Collapse](https://www.w3schools.com/howto/howto_js_collapsible.asp) ([W3Schools](https://www.w3schools.com/))
+- [Technique: Expandable sections](https://accessibility.huit.harvard.edu/technique-expandable-sections) ([Digital Accessibility](https://accessibility.huit.harvard.edu/) website of Harvard University)
 
 <a id="sources-and-assets"></a>
 
