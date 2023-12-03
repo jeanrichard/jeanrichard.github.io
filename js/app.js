@@ -21,7 +21,7 @@ import * as approach2 from './approach2.js';
  *------------------------------------------------------------------------------------------------*/
 
 /*
-* Begin global variables.
+ * Begin global variables.
  */
 
 /**

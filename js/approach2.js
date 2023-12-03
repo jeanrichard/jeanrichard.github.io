@@ -93,7 +93,7 @@ function computeThreshold() {
  * @param {number} threshold as described above.
  * @returns {IntersectionObserver} the observer.
  */
-function enableObserver(threshold) {
+function enableSectionObserver(threshold) {
   // Get all sections.
   const sections = document.querySelectorAll('main > section');
 
@@ -135,6 +135,43 @@ function enableObserver(threshold) {
   return observer;
 }
 
+/**
+ * Enables an observer that makes the button to scroll the page to the top visible if the user has
+ * scrolled down enough.
+ */
+function enableFoldObserver() {
+  // Get the button to scroll the page to the top.
+  const scrollToTopBtn = utils.getScrollToTopBtn();
+
+  // This will be called whenever the visible fraction of the dummy page fold element becomes (or no
+  // longer is) greater than or equal to the threshold.
+  const callback = (
+    /**@type {IntersectionObserverEntry[]}*/ entries,
+    /**@type {IntersectionObserver}*/ _observer
+  ) => {
+    // There is exactly 1 button.
+    const entry = entries[0];
+
+    // Figure out if we are below the page fold.
+    const isBelowFold = !entry.isIntersecting;
+    // ... and make the button appear or disappear.
+    scrollToTopBtn.style.display = (isBelowFold ? 'block' : 'none');
+  };
+
+  const options = {
+    threshold: utils.PAGE_FOLD_VH_FRACTION,
+  };
+
+  const observer = new IntersectionObserver(callback, options);
+
+  // Observe the dummy page fold element.
+  const foldProbe = document.querySelector('.page__fold-probe');
+  // @ts-ignore: Argument of type 'Element | null' is not assignable ... .
+  observer.observe(foldProbe);
+
+  return observer;
+}
+
 /*
  * End helper functions.
  * Begin event-handlers.
@@ -152,7 +189,7 @@ function handleResize(_event) {
   // Compute the new threshold.
   const threshold = computeThreshold();
   // ... and enable the new section observer.
-  sectionObserver = enableObserver(threshold);
+  sectionObserver = enableSectionObserver(threshold);
 }
 
 /*
@@ -170,10 +207,18 @@ export function approachEnable() {
   // Compute the threshold.
   const threshold = computeThreshold();
   // ... and enable the section observer.
-  sectionObserver = enableObserver(threshold);
+  sectionObserver = enableSectionObserver(threshold);
 
   // Start listening to 'resize' events.
   window.addEventListener("resize", handleResize);
+
+  // Enable the page fold observer.
+  foldObserver = enableFoldObserver();
+
+  // Get the button to scroll the page to the top.
+  const scrollToTopBtn = utils.getScrollToTopBtn();
+  // ... and start listening to 'click' events.
+  scrollToTopBtn.addEventListener('click', utils.scrollToTop);
 }
 
 /**
@@ -188,4 +233,15 @@ export function approachDisable() {
   sectionObserver.disconnect();
   //... and make it collectable by the GC.
   sectionObserver = null;
+
+  // Disable the current page fold observer.
+  // @ts-ignore: ... is possibly 'null'.
+  foldObserver.disconnect();
+  //... and make it collectable by the GC.
+  foldObserver = null;
+
+  // Get the button to scroll the page to the top.
+  const scrollToTopBtn = utils.getScrollToTopBtn();
+  // ... and stop listening to 'click' events.
+  scrollToTopBtn.removeEventListener('click', utils.scrollToTop);
 }

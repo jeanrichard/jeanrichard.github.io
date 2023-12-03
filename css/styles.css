@@ -4,7 +4,7 @@
  *
  * For simplicity, no reset or normalize is added.
  * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/.
-*/
+ */
 
 /* stylelint-disable selector-class-pattern, selector-id-pattern */
 
@@ -114,6 +114,16 @@ section {
 
 .page__footer p {
   color: #fff;
+}
+
+/* Page Fold Probe for Approach n°2 */
+.page__fold-probe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100vh;
+  visibility: hidden;
 }
 
 /* Scroll-to-top Button */
