@@ -19,6 +19,7 @@ Content:
     - [2.2.3. Comparison of approaches](#back-to-top-button-comparison-of-approaches)
     - [2.2.4. References](#back-to-top-button-references)
   - [2.3. Collapsible sections](#collapsible-sections)
+  - [2.4 Auto-hiding scrollbar](#auto-hiding-scrollbar)
 - [3. Sources and assets](#sources-and-assets)
 - [4. Additional references](#additional-references)
 - [5. Tools used](#tools-used)
@@ -233,6 +234,27 @@ We were inspired by the following sources:
 - [How To - Collapse](https://www.w3schools.com/howto/howto_js_collapsible.asp) ([W3Schools](https://www.w3schools.com/))
 - [Technique: Expandable sections](https://accessibility.huit.harvard.edu/technique-expandable-sections) ([Digital Accessibility](https://accessibility.huit.harvard.edu/) website of Harvard University)
 
+<a id="auto-hiding-scrollbar"></a>
+
+### 2.4. Design notes — Auto-hiding scrollbar
+
+#### Description
+
+We initially add the classes `scrollable-content` and `scrollable-content--active` to the `<html>` element. As soon as the user moves the mouse and/or scrolls, we schedule a callback to remove the `scrollable-content--active` class. If the user scrolls and/or move, we cancel the current callback and schedule a new one.
+
+🔧 What could be improved:
+
+- When the scrollbar disappears, the content "jolts" to the right, which is not very pleasant. Reference 3. below describes the problem and suggests a few remedies. We tried the `scrollbar-gutter` CSS property but the result was not pleasant aesthetically due to the colored background. We did not try the other options.
+
+#### References
+
+We were inspired by the following sources:
+
+1. [Using CSS to hide scrollbars without impacting scrolling](https://blog.logrocket.com/hide-scrollbar-without-impacting-scrolling-css/) ([LogRocket Blog](https://blog.logrocket.com/), Fimber Elemuwa, October 2023)
+2. [The Current State of Styling Scrollbars in CSS (2022 Update)](https://css-tricks.com/the-current-state-of-styling-scrollbars-in-css/) ([CSS-Tricks](https://css-tricks.com/),
+   Chris Coyier, February 2022)
+3. [Preventing the Layout Shift Caused by Scrollbars](https://dev.to/rashidshamloo/preventing-the-layout-shift-caused-by-scrollbars-2flp) ([DEV Community](https://dev.to/), Rashid Shamloo, August 2023)
+
 <a id="sources-and-assets"></a>
 
 ## 3. Sources and assets
@@ -243,7 +265,7 @@ We did not add additional assets to the starter project.
 
 ## 4. Additional references
 
-TODO
+See the Design Notes above.
 
 <a id="tools-used"></a>
 
