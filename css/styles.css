@@ -361,6 +361,26 @@ section:nth-of-type(even) .collapsible--expanded .collapsible__btn::before {
   content: '\FF0D'; /* Full-width Hyphen-Minus */
 }
 
+/* Hiding the Scroll-bars */
+
+.scrollable-content {
+  overflow-y: scroll;
+}
+
+.scrollable-content:not(.scrollable-content--active) {
+  /* Internet Explorer 10+. */
+  -ms-overflow-style: none;
+
+  /* Firefox. */
+  scrollbar-width: none;
+}
+
+.scrollable-content:not(.scrollable-content--active)::-webkit-scrollbar {
+  /* WebKit-based. */
+  width: 0;
+  height: 0;
+}
+
 /* ---- Theme State Rules ---- */
 
 /* Section Active Styles */

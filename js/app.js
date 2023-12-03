@@ -213,6 +213,50 @@ function setupSettingsWidget() {
  */
 
 /*------------------------------------------------------------------------------------------------
+ * Auto-hiding scrollbars
+ *------------------------------------------------------------------------------------------------*/
+
+/*
+ * Begin global variables.
+ */
+
+const SCROLLBAR_TIMEOUT_MS = 2500;
+
+/**
+ * The current approach, either "approach-1" or "approach-2".
+ * @type {number | undefined | NodeJS.Timeout}
+ */
+let hideScrollbarsTimeoutId = undefined;
+
+/*
+ * End global variables.
+ * Begin helper functions and event handlers.
+ */
+
+/**
+ * Adds a class to show the scrollbars and schedule a callback to remove it in
+ * `SCROLLBAR_TIMEOUT_MS` ms (unless this function is called in the meantime).
+ * @param {Event} _event a 'scroll' or 'mousemove' event (not used).
+ */
+function showScrollbars(_event) {
+  // Cancel the current callback to hide the scrollbars (if any).
+  clearTimeout(hideScrollbarsTimeoutId);
+
+  // Schedule a new callback to hide the scrollbars.
+  /** @type {HTMLElement} */
+  // @ts-ignore: Type 'HTMLHtmlElement | null' is not assignable ... .
+  const html = document.querySelector('html');
+  html.classList.add('scrollable-content--active');
+  hideScrollbarsTimeoutId = setTimeout(() => {
+    html.classList.remove('scrollable-content--active');
+  }, SCROLLBAR_TIMEOUT_MS);
+}
+
+/*
+ * End helper functions and event handlers.
+ */
+
+/*------------------------------------------------------------------------------------------------
  * Main part
  *------------------------------------------------------------------------------------------------*/
 
@@ -305,6 +349,13 @@ function doSetup() {
   for (const section of sections) {
     enableCollapsibleSection(section);
   }
+
+  // Auto-hiding scrollbars.
+
+  // We want to show scrollbars while scrolling.
+  document.addEventListener('scroll', showScrollbars);
+  // ... and while moving the mouse.
+  document.addEventListener('mousemove', showScrollbars);
 }
 
 /**
