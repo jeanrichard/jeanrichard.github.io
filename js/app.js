@@ -1,6 +1,7 @@
 // @ts-check
 import { appendSection, removeSection } from './mock-data.js';
-import * as approach1 from './approach1.js';
+// import * as approach1 from './approach1.js';
+import * as approach2 from './approach2.js';
 
 /**
  * Manipulating the DOM exercise.
@@ -139,7 +140,8 @@ function doSetup() {
   setupSettingsWidget();
 
   // Enable approach 1.
-  approach1.approachEnable();
+  // approach1.approachEnable();
+  approach2.approachEnable();
 }
 
 /**
