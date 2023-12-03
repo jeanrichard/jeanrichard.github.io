@@ -1,5 +1,6 @@
 // @ts-check
 import { appendSection, removeSection } from './mock-data.js';
+import * as approach1 from './approach1.js';
 
 /**
  * Manipulating the DOM exercise.
@@ -57,30 +58,8 @@ function setupSettingsWidget() {
  *------------------------------------------------------------------------------------------------*/
 
 /*
- * Begin main functions.
+ * Begin event-handlers.
  */
-
-/**
- * Builds the navigation bar.
- */
-function buildNav() {
-  // Get all sections.
-  const sections = document.querySelectorAll('main > section');
-
-  // Create a fragment to hold the menu items.
-  const itemsFragment = document.createDocumentFragment();
-  for (const section of sections) {
-    const sectionDataNav = section.getAttribute('data-nav')
-    const li = document.createElement('li');
-    li.innerHTML = `<a href="#${section.id}" class="menu__link">${sectionDataNav}</a>`;
-    itemsFragment.appendChild(li);
-  }
-
-  // Insert the menu items.
-  const navbarList = document.querySelector('#navbar__list');
-  // @ts-ignore: ... is possibly 'null'.
-  navbarList.replaceChildren(itemsFragment);
-}
 
 /**
  * Scrolls to the section clicked by the user in the navigation bar.
@@ -112,6 +91,33 @@ function scrollToSection(event) {
   }
 }
 
+/*
+ * End event-handlers.
+ * Begin main functions.
+ */
+
+/**
+ * Builds the navigation bar.
+ */
+function buildNav() {
+  // Get all sections.
+  const sections = document.querySelectorAll('main > section');
+
+  // Create a fragment to hold the menu items.
+  const itemsFragment = document.createDocumentFragment();
+  for (const section of sections) {
+    const sectionDataNav = section.getAttribute('data-nav')
+    const li = document.createElement('li');
+    li.innerHTML = `<a href="#${section.id}" class="menu__link">${sectionDataNav}</a>`;
+    itemsFragment.appendChild(li);
+  }
+
+  // Insert the menu items.
+  const navbarList = document.querySelector('#navbar__list');
+  // @ts-ignore: ... is possibly 'null'.
+  navbarList.replaceChildren(itemsFragment);
+}
+
 /**
  * Sets up navigation-bar, highlighting the active section, etc.
  */
@@ -131,9 +137,13 @@ function doSetup() {
 
   // Set up the settings widget.
   setupSettingsWidget();
+
+  // Enable approach 1.
+  approach1.approachEnable();
 }
 
 /**
+ * End main functions.
  * Begin events.
  */
 
