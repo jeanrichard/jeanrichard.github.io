@@ -115,6 +115,32 @@ section {
 .page__footer p {
   color: #fff;
 }
+
+/* Scroll-to-top Button */
+#page__scroll-to-top {
+  /* Location: lower-right corner of the viewport. */
+  position: fixed;
+  z-index: 100; /* Keep it on top. */
+  right: 20px;
+  bottom: 20px;
+  display: none; /* Hidden by default. */
+  padding: 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #cc1;
+  color: #000;
+  cursor: pointer;
+  font-family: Merriweather, serif;
+  font-size: 16px;
+  outline: none;
+}
+
+#page__scroll-to-top:hover {
+  background: #333;
+  color: #fff;
+  transition: ease 0.25s all;
+}
+
 /* Little Settings Widget */
 .settings {
   /* Location: along the right edge of the viewport. */

@@ -23,6 +23,8 @@
 
 export const SECTION_ACTIVE_CLASS = 'section--active';
 
+export const PAGE_FOLD_VH_FRACTION = 0.50;
+
 /*
  * End global variables.
  * Begin helper functions.
@@ -45,6 +47,31 @@ export function makeMenuLinkActive(sectionId) {
   }
 }
 
+/**
+ * Returns the button to scroll the page to the top.
+ * @returns {HTMLButtonElement} as described above.
+ */
+export function getScrollToTopBtn() {
+  // There is exactly 1 button.
+  /** @type { HTMLButtonElement } */
+  // @ts-ignore: Type 'HTMLElement | null' is not assignable ... .
+  const scrollToTopBtn = document.getElementById('page__scroll-to-top');
+  return scrollToTopBtn;
+}
+
 /*
  * End helper functions.
+ * Begin event-handlers.
+ */
+
+/**
+ * Scrolls the page all the way to the top.
+ * @param {Event} _event a 'click' event (not used).
+ */
+export function scrollToTop(_event) {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/*
+ * End event-handlers.
  */

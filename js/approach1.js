@@ -74,6 +74,20 @@ function makeSectionActive() {
   utils.makeMenuLinkActive(sectionId);
 }
 
+/**
+ * Makes the button to scroll the page to the top visible if the user has scrolled down enough.
+ */
+function makeScrollToTopActive() {
+  // Get the button to scroll the page to the top.
+  const scrollToTopBtn = utils.getScrollToTopBtn();
+
+  // Figure out if we are below the page fold.
+  const fold = Math.ceil(utils.PAGE_FOLD_VH_FRACTION * window.innerHeight);
+  const isBelowFold = (window.scrollY >= fold);
+  // ... and make the button appear or disappear.
+  scrollToTopBtn.style.display = (isBelowFold ? 'block' : 'none');
+}
+
 /*
  * End helper functions.
  * Begin event-handlers.
@@ -85,6 +99,7 @@ function makeSectionActive() {
  */
 function handleScroll(_event) {
   makeSectionActive();
+  makeScrollToTopActive();
 }
 
 /*
@@ -98,8 +113,13 @@ function handleScroll(_event) {
 export function approachEnable() {
   document.addEventListener('scroll', handleScroll);
 
+  // Get the button to scroll the page to the top.
+  const scrollToTopBtn = utils.getScrollToTopBtn();
+  scrollToTopBtn.addEventListener('click', utils.scrollToTop);
+
   // Check immediately.
   makeSectionActive();
+  makeScrollToTopActive();
 }
 
 /**
@@ -107,6 +127,10 @@ export function approachEnable() {
  */
 export function approachDisable() {
   document.removeEventListener('scroll', handleScroll);
+
+  // Get the button to scroll the page to the top.
+  const scrollToTopBtn = utils.getScrollToTopBtn();
+  scrollToTopBtn.removeEventListener('click', utils.scrollToTop);
 }
 
 /*
