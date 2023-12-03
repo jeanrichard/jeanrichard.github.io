@@ -210,11 +210,11 @@ export function appendSection() {
     // Update the button.
     /** @type {HTMLElement} */
     // @ts-ignore: Type 'HTMLElement | null' is not assignable ... .
-    const h2 = section.querySelector('h2');
-    h2.textContent = sectionData['title'];
+    const btn = section.querySelector('.collapsible__btn');
+    btn.textContent = sectionData['title'];
 
     // Uupdate the paragraphs.
-    const ps = section.querySelectorAll('p');
+    const ps = section.querySelectorAll('.collapsible__content p');
     ps[0].textContent = sectionData['paragraphs'][0];
     ps[1].textContent = sectionData['paragraphs'][1];
 

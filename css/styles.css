@@ -57,7 +57,7 @@ main {
 
 section {
   position: relative;
-  min-height: 80vh;
+  min-height: 40vh;
 }
 
 /* ---- Module Rules ---- */
@@ -292,6 +292,73 @@ section:nth-of-type(3n + 1) .landing__container::after {
   content: '';
   opacity: 0;
   transition: ease 0.5s all;
+}
+
+/* Collapsible sections */
+
+.collapsible__btn {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  border: none;
+  background-color: inherit;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  outline: none;
+  text-align: inherit;
+}
+
+.collapsible__btn:hover {
+  background-color: rgb(255 255 255 / 20%);
+}
+
+.collapsible__content {
+  overflow: hidden;
+  max-height: 100%; /* Expanded by default, adjust height based on content. */
+  padding: 0 18px;
+}
+
+/*
+Odd-numbered sections are left-aligned (1-based).
+We want to have the state indicator located to the right of the heading.
+Collapsed stated.
+*/
+section:nth-of-type(odd) .collapsible__btn::after {
+  align-self: center;
+  margin-left: auto;
+  color: white;
+  content: '\FF0B'; /* Full-width Plus Sign. */
+  float: right;
+  font-size: 0.5em;
+  font-weight: bold;
+}
+
+/* Expanded state. */
+section:nth-of-type(odd) .collapsible--expanded .collapsible__btn::after {
+  content: '\FF0D'; /* Full-width Hyphen-Minus */
+}
+
+/*
+Even-numbered sections are right-aligned (1-based).
+We want to have the state indicator located to the left of the heading.
+Collapsed stated.
+*/
+section:nth-of-type(even) .collapsible__btn::before {
+  align-self: center;
+  margin-right: auto;
+  color: white;
+  content: '\FF0B'; /* Full-width Plus Sign. */
+  float: left;
+  font-size: 0.5em;
+  font-weight: bold;
+}
+
+/* Expanded state */
+section:nth-of-type(even) .collapsible--expanded .collapsible__btn::before {
+  content: '\FF0D'; /* Full-width Hyphen-Minus */
 }
 
 /* ---- Theme State Rules ---- */

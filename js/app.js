@@ -17,6 +17,78 @@ import * as approach2 from './approach2.js';
  */
 
 /*------------------------------------------------------------------------------------------------
+ * Collapsible sections
+ *------------------------------------------------------------------------------------------------*/
+
+/*
+ * Start helper functions.
+ */
+
+/**
+ * Enables a collapsible section (used when appending a new section).
+ * @param section {HTMLElement} the section.
+ */
+function enableCollapsibleSection(section) {
+  /** @type {HTMLButtonElement} */
+  // @ts-ignore: Type 'HTMLButtonElement | null' is not assignable ... .
+  const btn = section.querySelector('.collapsible__btn');
+  btn.addEventListener('click', handleCollapsibleClick);
+}
+
+/**
+ * Disables a collapsible section (used when removing an existing section).
+ * @param section {HTMLElement} the section.
+ */
+function disableCollapsibleSection(section) {
+  /** @type {HTMLButtonElement} */
+  // @ts-ignore: Type 'HTMLButtonElement | null' is not assignable ... .
+  const btn = section.querySelector('.collapsible');
+  btn.removeEventListener('click', handleCollapsibleClick);
+}
+
+/*
+ * End helper functions.
+ * Begin events.
+ */
+
+/**
+ * Expand or collapse a section.
+ * @param {Event} event a 'click' event.
+ */
+function handleCollapsibleClick(event) {
+  /** @type {HTMLElement} */
+  // @ts-ignore: Type 'EventTarget | null' is not assignable ... .
+  const target = event.target;
+
+  // Ensure the user really clicked on one of the buttons.
+  if (target.nodeType === Node.ELEMENT_NODE && target.nodeName === 'BUTTON') {
+    /** @type {HTMLElement} */
+    // @ts-ignore: Type 'EventTarget | null' is not assignable ... .
+    const btn = event.target;
+    /** @type {HTMLElement} */
+    // @ts-ignore: Type 'HTMLElement | null' is not assignable ... .
+    const coll = btn.parentElement;
+    /** @type {HTMLElement} */
+    // @ts-ignore: Type 'HTMLElement | null' is not assignable ... .
+    const content = coll.nextElementSibling;
+    const isExpanded = coll.classList.toggle('collapsible--expanded');
+    if (isExpanded) {
+      content.style.maxHeight = "100%";
+      btn.setAttribute('aria-expanded', 'true');
+      content.setAttribute('aria-hidden', 'false');
+    } else {
+      content.style.maxHeight = "0";
+      btn.setAttribute('aria-expanded', 'false');
+      content.setAttribute('aria-hidden', 'true');
+    }
+  }
+}
+
+/**
+ * End events.
+ */
+
+/*------------------------------------------------------------------------------------------------
  * Settings widget
  *------------------------------------------------------------------------------------------------*/
 
@@ -96,6 +168,8 @@ function setupSettingsWidget() {
   appendSectionButton.addEventListener('click', _ => {
     const section = appendSection();
     if (section !== null) {
+      // Enable the (new) collapsible section.
+      enableCollapsibleSection(section);
       // Rebuild the navigation bar.
       buildNav();
       // Set up active section detection, etc. based on the selected approach.
@@ -109,6 +183,8 @@ function setupSettingsWidget() {
   removeSectionButton.addEventListener('click', _ => {
     const section = removeSection();
     if (section !== null) {
+      // Disable the (old) collapsible section.
+      disableCollapsibleSection(section);
       // Rebuild the navigation bar.
       buildNav();
       // Set up active section detection, etc. based on the selected approach.
@@ -125,7 +201,8 @@ function setupSettingsWidget() {
   // Find out the current approach.
   /** @type {Element} */
   // @ts-ignore: ... is possibly 'null'.
-  const defaultChoice = document.querySelector('#approach-widget__choices input[type="radio"]:checked');
+  const defaultChoice = document.querySelector(
+    '#approach-widget__choices input[type="radio"]:checked');
   const newApproach = defaultChoice.getAttribute('value');
   // @ts-ignore: ... is possibly 'null'.
   changeApproach(newApproach, /*force=*/true);
@@ -219,6 +296,15 @@ function doSetup() {
 
   // Set up the settings widget.
   setupSettingsWidget();
+
+  // Collapsible sections.
+
+  /**@type {HTMLCollectionOf<HTMLElement>}*/
+  // @ts-ignore: Type 'HTMLCollectionOf<Element>' is not assignable ... .
+  const sections = document.querySelectorAll('main > section');
+  for (const section of sections) {
+    enableCollapsibleSection(section);
+  }
 }
 
 /**
