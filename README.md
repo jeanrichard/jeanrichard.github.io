@@ -11,6 +11,8 @@ Content:
   - [2.1. Highlight the active section](#active-section)
     - [2.1.1. Approach 1a — Scroll event and active line](#active-section-approach-1a)
     - [2.1.2. Approach 1b — Scroll event and active band](#active-section-approach-1b)
+    - [2.1.3. Approach 2 — Intersection Observer API](#active-section-approach-2)
+    - [2.1.4. Comparison of approaches](#active-section-comparison-of-approaches)
 - [3. Sources and assets](#sources-and-assets)
 - [4. Additional references](#additional-references)
 - [5. Tools used](#tools-used)
@@ -76,6 +78,52 @@ In the following diagram, we use the same conventions as above for the page, the
 The 2 edge cases described above for the active line also apply here.
 
 There is one more case we need to take care of: if we want all sections to be active at some point, the width $w$ of the band should not exceed the height of the shortest section. Here, since the CSS property `min-height: 80vh;` applies to all sections, we have a lower bound on the height of the shortest section. We can then use `window.innerHeight` as an approximation for `vh`, and make sure that $w$ is less than or equal to `0.8 * window.innerHeight`.
+
+<a id="active-section-approach-2"></a>
+
+#### 2.1.3. Approach 2 — Intersection Observer API
+
+##### Description
+
+Since 2019, Chrome, Firefox and Safari all support the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API).
+
+In this approach, we use an observer to monitor the intersection(s) between the sections and the viewport. The observer takes a threshold $0 \leq t \leq 1$. For any given section, we can look at the "visible fraction" $f$ of that section i.e., the fraction of that section visible in the viewport. If $f \geq t$, the section is "in"; otherwise, $f < t$ and the section is "out". Whenever the status of one or more sections changes, the browser executes a callback, provided with the list of those sections impacted. That way, we can easily keep track of the state of all sections in the page. Finally, we define _the_ active section as the first section that is "in" (if any).
+
+In the following diagram, we use the same conventions as above for the page, the viewport, and the sections. The part of a section that is visible in the viewport is colored using a darker shared of blue. In this example, we assume that $t = 60\%$.
+
+![A visual depiction of approach 2](./doc/approach-2-overview.png)
+
+##### Edge cases
+
+As the following edge cases show, Approach 2 also requires a little bit of help from the design in order to work in all cases. Case (a): If we do not want the first section to be immediately active, there should be enough space at the top of the page, so that the visible fraction of the first section is initially ${} < t$. Case (b): If we want the last section to be active at some point, there should be enough space at the bottom of the page, so that the last section is the _only_ section with a visible fraction ${} \geq t$ at some point.
+
+![A visual depiction of possible edge cases with approach 2](./doc/approach-2-edge-cases.png)
+
+There is one more case we need to take care of: if the user reduces the width of the browser window to the minimum allowed, the reflow may increase the height of a section to the point that the visible fraction of that section can _no longer_ reach $t$. Case (a): In the original configuration, the visible fraction of the section can reach 100%. Case (b): the visible fraction of that same section cannot exceed 3/8.
+
+![A visual depiction of an edge case caused by reducing the width of the browser window](./doc/approach-2-edge-case-resize.png)
+
+We use the following approach to prevent this. On page load (`DOMContentLoaded` event), we compute the maximum visible fraction of each section and use the minimum of those values as the initial threshold $t$. Then, on resize (`resize` event), we re-compute the threshold $t$ (and re-create the observer).
+
+<a id="active-section-comparison-of-approaches"></a>
+
+#### 2.1.4. Comparison of approaches
+
+Approach 1:
+
+- Implementation: simple to implement.
+- Need to handle: `scroll` event.
+- Book-keeping: none required.
+- Performance: good. Could easily scale to 100+ sections without the user noticing.
+
+Approach 2:
+
+- Implementation: more complicated to implement.
+- Need to handle: observer callback and `resize` event (usually a much more rare occurrence than the `scroll` event).
+- Book-keeping: some required (e.g., which sections are "in").
+- Performance: good. Should outperform approach 1, since all visibility computations are "pushed" to the browser, and our code is called only when needed. Could in theory scale to an arbitrary number of sections.
+
+If we had to choose, we would use Approach 1 for its combination of simplicity and good performance. A Landing Page, by its very nature, is probably unlikely to have more than 20 sections.
 
 <a id="sources-and-assets"></a>
 
