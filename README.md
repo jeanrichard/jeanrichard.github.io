@@ -13,6 +13,8 @@ Content:
     - [2.1.2. Approach 1b — Scroll event and active band](#active-section-approach-1b)
     - [2.1.3. Approach 2 — Intersection Observer API](#active-section-approach-2)
     - [2.1.4. Comparison of approaches](#active-section-comparison-of-approaches)
+  - [2.2. Back-to-top button](#back-to-top-button)
+    - [2.2.1. Approach 1 — Scroll event](#back-to-top-button-approach-1)
 - [3. Sources and assets](#sources-and-assets)
 - [4. Additional references](#additional-references)
 - [5. Tools used](#tools-used)
@@ -128,6 +130,26 @@ Approach 2:
 - Performance: good. Should outperform approach 1, since all visibility computations are "pushed" to the browser, and our code is called only when needed. Could in theory scale to an arbitrary number of sections.
 
 If we had to choose, we would use Approach 1 for its combination of simplicity and good performance. A Landing Page, by its very nature, is probably unlikely to have more than 20 sections.
+
+<a id="back-to-top-button"></a>
+
+### 2.2. Back-to-top button
+
+<a id="back-to-top-button-approach-1"></a>
+
+#### 2.2.1. Approach 1 — Scroll event
+
+##### Description
+
+In this approach, we handle the `scroll` event. Whenever we have scrolled down enough, we make the button appear. The listener uses the following test to decide if we are below the page fold:
+
+```js
+const isBelowFold = window.scrollY >= PAGE_FOLD_VH_FRACTION * window.innerHeight;
+```
+
+**ⓘ Note:**
+
+- The `PAGE_FOLD_VH_FRACTION` should between 0 and 1. A value of 0 will make the button appear immediately without scrolling down. A value of 1 will make the button appear after scrolling down by the height of the viewport.
 
 <a id="sources-and-assets"></a>
 
