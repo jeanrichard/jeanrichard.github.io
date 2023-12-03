@@ -1,6 +1,6 @@
 // @ts-check
 import { appendSection, removeSection } from './mock-data.js';
-// import * as approach1 from './approach1.js';
+import * as approach1 from './approach1.js';
 import * as approach2 from './approach2.js';
 
 /**
@@ -21,6 +21,69 @@ import * as approach2 from './approach2.js';
  *------------------------------------------------------------------------------------------------*/
 
 /*
+* Begin global variables.
+ */
+
+/**
+ * The current approach, either "approach-1" or "approach-2".
+ * @type {string}
+ */
+let curApproach = 'approach-1';
+
+/*
+ * End global variables.
+ * Begin helper functions.
+ */
+
+/**
+ * Changes the approach used to highlight the active section and to detect if we are below the page
+ * fold.
+ *
+ * The `force` parameter controls what to do when the new approach is the same as the current
+ * approach. Passing `false` will do nothing; passing `true` will force the function to disable and
+ * re-enable the current approach.
+ *
+ * @param {string} newApproach the name of the new approach.
+ * @param {boolean} force as described above.
+ */
+function changeApproach(newApproach, force) {
+  if (newApproach !== curApproach || force) {
+    switch (curApproach) {
+      case 'approach-1': approach1.approachDisable(); break;
+      case 'approach-2': approach2.approachDisable(); break;
+    }
+    switch (newApproach) {
+      case 'approach-1': approach1.approachEnable(); break;
+      case 'approach-2': approach2.approachEnable(); break;
+    }
+    curApproach = newApproach;
+  }
+}
+
+/*
+ * End helper functions.
+ * Begin event-handlers.
+ */
+
+/**
+ * Changes the approach according to user input.
+ * @param {Event} event a 'change' event (not used).
+ */
+function handleApproachChoicesChange(event) {
+  /** @type {HTMLElement} */
+  // @ts-ignore: Type 'EventTarget | null' is not assignable ... .
+  const target = event.target;
+
+  // Ensure the user really clicked one of the radio buttons.
+  if (target.nodeType === Node.ELEMENT_NODE && target.nodeName === 'INPUT') {
+    const newApproach = target.getAttribute('value');
+    // @ts-ignore: Argument of type 'string | null' is not assignable ... .
+    changeApproach(newApproach, /*force=*/false);
+  }
+}
+
+/*
+ * End event-handlers.
  * Begin main functions.
  */
 
@@ -35,6 +98,8 @@ function setupSettingsWidget() {
     if (section !== null) {
       // Rebuild the navigation bar.
       buildNav();
+      // Set up active section detection, etc. based on the selected approach.
+      changeApproach(curApproach, /*force=*/true);
     }
   });
 
@@ -46,8 +111,24 @@ function setupSettingsWidget() {
     if (section !== null) {
       // Rebuild the navigation bar.
       buildNav();
+      // Set up active section detection, etc. based on the selected approach.
+      changeApproach(curApproach, /*force=*/true);
     }
   });
+
+  // Approach widget: we use event delegation.
+
+  const approachChoices = document.getElementById('approach-widget__choices');
+  // @ts-ignore: ... is possibly 'null'.
+  approachChoices.addEventListener('change', handleApproachChoicesChange);
+
+  // Find out the current approach.
+  /** @type {Element} */
+  // @ts-ignore: ... is possibly 'null'.
+  const defaultChoice = document.querySelector('#approach-widget__choices input[type="radio"]:checked');
+  const newApproach = defaultChoice.getAttribute('value');
+  // @ts-ignore: ... is possibly 'null'.
+  changeApproach(newApproach, /*force=*/true);
 }
 
 /*
@@ -138,10 +219,6 @@ function doSetup() {
 
   // Set up the settings widget.
   setupSettingsWidget();
-
-  // Enable approach 1.
-  // approach1.approachEnable();
-  approach2.approachEnable();
 }
 
 /**
