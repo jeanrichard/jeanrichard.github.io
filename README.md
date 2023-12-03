@@ -8,6 +8,9 @@ Content:
 
 - [1. Instructions](#instructions)
 - [2. Design notes](#design-notes)
+  - [2.1. Highlight the active section](#active-section)
+    - [2.1.1. Approach 1a — Scroll event and active line](#active-section-approach-1a)
+    - [2.1.2. Approach 1b — Scroll event and active band](#active-section-approach-1b)
 - [3. Sources and assets](#sources-and-assets)
 - [4. Additional references](#additional-references)
 - [5. Tools used](#tools-used)
@@ -26,13 +29,59 @@ For specific, detailed instructions, look at the project instructions in the Uda
 
 ## 2. Design notes
 
-TODO
+<a id="active-section"></a>
+
+### 2.1. Highlight the active section
+
+To highlight the active section (section in view), we would like to meet the following requirement(s):
+
+- **R1:** By scrolling continuously from top to bottom, each section must be considered active _exactly once_. In other words, no section should be omitted (e.g., because it is the first one or the last one), or skipped over.
+
+<a id="active-section-approach-1a"></a>
+
+#### 2.1.1. Approach 1a — Scroll event and active line
+
+##### Description
+
+This is the approach suggested in the Development Strategy.
+
+In this approach, we define an "active (horizontal) line" in the viewport. As the user scrolls down (or up), the section that straddles that line (if any) is considered active. The line can be described by the distance $d$ from viewport-top to the line. We can use absolute values (e.g., 100px) or relative values (e.g., 20% of viewport-height) for $d$.
+
+In the following diagram, the page is represented by the tall black rectangle, the viewport by the red rectangle, and the sections by blue boxes. The "active line" is represented by the green horizontal line. In this scenario, the user is scrolling down. In case (b), the section straddles the "active line" and is thus considered active.
+
+![A visual depiction of approach 1, where the active range is a line](./doc/approach-1-line.png)
+
+##### Edge cases
+
+As the following edge cases show, Approach 1a requires a little bit of help from the design in order to work in call cases. Case (a): There should be enough space at the top of the page, so that the first section is located below the active line when the page is scrolled all the way to the top. Case (b): There should be enough space at the bottom of the page, so that the last section is located above the active line when the page is scrolled all the way to the bottom.
+
+![A visual depiction of possible edge cases with approach 1](./doc/approach-1-edge-cases.png)
+
+<a id="active-section-approach-1b"></a>
+
+#### 2.1.2. Approach 1b — Scroll event and active band
+
+##### Description
+
+In this approach, instead of a line, we define an "active (horizontal) band" in the viewport. As the user scrolls down (or up), the section that straddles that band (if any) is considered active. The band can be described by the distance $d$ from viewport-top to band-top, and the width $w$ of the band. We can use absolute values (e.g., 100px), relative values (e.g., 20% of viewport-height), or a mixture of both.
+
+Compared to the line, the band provides a little "pause" between 2 active sections when scrolling (assuming that there is no space between consecutive sections).
+
+In the following diagram, we use the same conventions as above for the page, the viewport, and the sections. The "active band" is represented by the green horizontal band. In this scenario, the user is scrolling down. In case (b), the section straddles the "active band" and is thus considered active.
+
+![A visual depiction of approach 1, where the active range is a line](./doc/approach-1-band.png)
+
+##### Edge cases
+
+The 2 edge cases described above for the active line also apply here.
+
+There is one more case we need to take care of: if we want all sections to be active at some point, the width $w$ of the band should not exceed the height of the shortest section. Here, since the CSS property `min-height: 80vh;` applies to all sections, we have a lower bound on the height of the shortest section. We can then use `window.innerHeight` as an approximation for `vh`, and make sure that $w$ is less than or equal to `0.8 * window.innerHeight`.
 
 <a id="sources-and-assets"></a>
 
 ## 3. Sources and assets
 
-TODO
+We did not add additional assets to the starter project.
 
 <a id="additional-references"></a>
 
