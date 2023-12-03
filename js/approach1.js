@@ -1,6 +1,5 @@
-import * as utils from './utils.js';
-
 // @ts-check
+import * as utils from './utils.js';
 
 /**
  * Manipulating the DOM exercise.
