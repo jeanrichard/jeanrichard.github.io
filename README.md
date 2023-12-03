@@ -39,6 +39,10 @@ To highlight the active section (section in view), we would like to meet the fol
 
 - **R1:** By scrolling continuously from top to bottom, each section must be considered active _exactly once_. In other words, no section should be omitted (e.g., because it is the first one or the last one), or skipped over.
 
+We explored 2 different approaches in this project. We added a little settings widget along the right edge of the viewport; it allows to append/remove sections (minimum 1, maximum 16) and to switch the approach (n°1 = approach 1b or n°2 = approach 2).
+
+![A screenshot of the little settings widget we added to the page](./doc/settings-widget.png)
+
 <a id="active-section-approach-1a"></a>
 
 #### 2.1.1. Approach 1a — Scroll event and active line
