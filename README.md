@@ -15,6 +15,9 @@ Content:
     - [2.1.4. Comparison of approaches](#active-section-comparison-of-approaches)
   - [2.2. Back-to-top button](#back-to-top-button)
     - [2.2.1. Approach 1 — Scroll event](#back-to-top-button-approach-1)
+    - [2.2.2. Approach 2 — Intersection Observer API and dummy element](#back-to-top-button-approach-2)
+    - [2.2.3. Comparison of approaches](#back-to-top-button-comparison-of-approaches)
+    - [2.2.4. References](#back-to-top-button-references)
 - [3. Sources and assets](#sources-and-assets)
 - [4. Additional references](#additional-references)
 - [5. Tools used](#tools-used)
@@ -135,6 +138,8 @@ If we had to choose, we would use Approach 1 for its combination of simplicity a
 
 ### 2.2. Back-to-top button
 
+We also explored 2 different approaches to detect when the user has scrolled down sufficiently. Since those approaches use mechanisms similar to the ones used to highlight the active section, we did not add an additional widget. For the styling part, we were inspired by a few online resources, see the [References](#back-to-top-button-references) below.
+
 <a id="back-to-top-button-approach-1"></a>
 
 #### 2.2.1. Approach 1 — Scroll event
@@ -150,6 +155,53 @@ const isBelowFold = window.scrollY >= PAGE_FOLD_VH_FRACTION * window.innerHeight
 **ⓘ Note:**
 
 - The `PAGE_FOLD_VH_FRACTION` should between 0 and 1. A value of 0 will make the button appear immediately without scrolling down. A value of 1 will make the button appear after scrolling down by the height of the viewport.
+
+<a id="back-to-top-button-approach-2"></a>
+
+#### 2.2.2. Approach 2 — Intersection Observer API and dummy element
+
+##### Description
+
+In this approach, we add a dummy `<div>` as the first child of `<body>`. That `<div>` is invisible, has a height of `100vh` and does not impact the normal flow thanks to `position: absolute`. Whenever the visible fraction of that `<div>` is less than a certain threshold, we make the button appear. The observer uses the following threshold:
+
+```js
+const options = {
+  threshold: PAGE_FOLD_VH_FRACTION,
+};
+```
+
+**ⓘ Note:**
+
+- See the note for `PAGE_FOLD_VH_FRACTION` in approach 1 above.
+- For convenience, we added the `<div>` directly to _index.html_ and the styles directly to _styles.css_, but the `<div>` could of course also be built and styled programmatically.
+
+<a id="back-to-top-button-comparison-of-approaches"></a>
+
+#### 2.2.3. Comparison of approaches
+
+Approach 1:
+
+- Implementation: simple to implement.
+- Need to handle: `scroll` event.
+- Book-keeping: none required.
+- Performance: good.
+
+Approach 2:
+
+- Implementation: more complicated to implement. Requires adding a dummy element (the target of the observer).
+- Need to handle: observer callback.
+- Book-keeping: none required.
+- Performance: good. Should outperform approach 1, since all visibility computations are "pushed" to the browser, and our code is called only when needed.
+
+If we had to choose, we would use Approach 1 for its combination of simplicity and good performance.
+
+<a id="back-to-top-button-references"></a>
+
+#### 2.2.4. References
+
+We were inspired by:
+
+- [How To - Scroll Back To Top Button Semantic HTML](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp) ([W3Schools](https://www.w3schools.com/))
 
 <a id="sources-and-assets"></a>
 
