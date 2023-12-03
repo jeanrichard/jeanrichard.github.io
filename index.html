@@ -28,6 +28,24 @@
       <header class="main__hero">
         <h1>Landing Page</h1>
       </header>
+      <!-- Little widget to append/remove sections and switch the approach. -->
+      <menu class="settings">
+        <fieldset class="section-widget">
+          <legend>Section:</legend>
+          <button class="section-widget__button" id="section-append">&#65291;</button>
+          <button class="section-widget__button" id="section-remove">&#65293;</button>
+        </fieldset>
+      </menu>
+      <!-- Section template. This is used to append sections. -->
+      <template id="section-template">
+        <section id="" data-nav="">
+          <div class="landing__container">
+            <h2></h2>
+            <p></p>
+            <p></p>
+          </div>
+        </section>
+      </template>
       <!--
       Each Section has an ID (used for the anchor) and a data attribute that will populate the `li`
       node. Adding more sections will automatically populate the `nav`.
@@ -36,20 +54,21 @@
         <div class="landing__container">
           <h2>Section 1</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus
-            lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod
-            augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis
-            sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem
-            nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a
-            pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt
-            felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero
-            venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.
+            Praesent rutrum lacus eget sem laoreet, sit amet aliquam elit porta. Sed vel tortor quis
+            dolor vestibulum convallis. Vivamus at massa ligula. Nunc lectus massa, elementum vel
+            vulputate in, vehicula quis ex. Suspendisse vitae magna efficitur, porta turpis eu,
+            volutpat turpis. Donec iaculis id diam eget imperdiet. Quisque faucibus ultrices mi,
+            feugiat imperdiet justo consectetur eu. Suspendisse molestie enim eget risus mattis
+            sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+            cubilia curae; Nullam gravida molestie lectus, id placerat felis cursus quis. Nullam
+            feugiat pulvinar nunc id consequat. Maecenas efficitur orci vitae tellus tincidunt
+            placerat. Aenean eros.
           </p>
           <p>
-            Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus
-            aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus
-            purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet porttitor
-            tortor, eget elementum tortor mollis non.
+            In nec diam ac dolor finibus consequat. In mattis fringilla orci, vel posuere tortor
+            pharetra vel. Nunc ut mauris a diam pretium vestibulum. Aenean lobortis elementum
+            libero, at vestibulum dui semper vel. Nullam ullamcorper tempus varius. Sed pellentesque
+            eleifend convallis. Morbi suscipit eu proin.
           </p>
         </div>
       </section>
@@ -57,20 +76,21 @@
         <div class="landing__container">
           <h2>Section 2</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus
-            lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod
-            augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis
-            sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem
-            nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a
-            pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt
-            felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero
-            venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.
+            Sed tincidunt blandit mi, ac interdum velit dignissim a. Donec euismod neque quis diam
+            fermentum, et lobortis ante dignissim. Donec fringilla auctor turpis, ut viverra turpis
+            dictum quis. Sed imperdiet varius mollis. Vivamus iaculis risus a elit fermentum, ac
+            sodales eros finibus. Donec sed rhoncus ante, at euismod libero. Nunc non ex pulvinar,
+            aliquam velit eget, gravida mauris. Ut est elit, faucibus vitae justo ac, hendrerit
+            lacinia mi. Vestibulum laoreet, tellus ut euismod molestie, nulla metus sodales odio, id
+            auctor tellus dui eu mi. Donec ac ex est. Duis quis arcu nec velit faucibus ultricies
+            quis a lacus. Etiam porta turpis eu risus dapibus, eu interdum dui cursus. Fusce
+            ultricies ut.
           </p>
           <p>
-            Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus
-            aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus
-            purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet porttitor
-            tortor, eget elementum tortor mollis non.
+            Donec tempor leo erat, vitae ornare mauris maximus vitae. In rhoncus lorem eu
+            condimentum scelerisque. Morbi fringilla augue in mauris dignissim cursus. Integer a
+            lacus faucibus, elementum felis eu, sodales mi. Nullam rutrum sagittis risus, vel ornare
+            neque vehicula eu. Praesent eu libero a aliquam.
           </p>
         </div>
       </section>
@@ -78,20 +98,44 @@
         <div class="landing__container">
           <h2>Section 3</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus
-            lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod
-            augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis
-            sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem
-            nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a
-            pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt
-            felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero
-            venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.
+            Praesent imperdiet ac ex id posuere. Quisque consequat id sapien eu blandit. Nullam
+            tellus risus, vehicula non elit a, consectetur bibendum dui. Morbi ac est at lacus
+            scelerisque posuere id vel nunc. Sed eu odio mi. Vivamus suscipit urna sed arcu semper
+            scelerisque. Duis blandit velit vulputate metus viverra vehicula. Cras placerat justo
+            quis aliquet porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi
+            sapien, dictum vitae varius eu, pharetra nec tellus. Donec eros sem, iaculis ut pretium
+            vel, hendrerit id nulla. Proin rutrum lobortis mi eu blandit. Etiam lacinia, velit at
+            tristique pulvinar, lorem ante maximus mauris, eget mollis nulla eros non enim. Vivamus
+            cras amet.
           </p>
           <p>
-            Aliquam a convallis justo. Vivamus venenatis, erat eget pulvinar gravida, ipsum lacus
-            aliquet velit, vel luctus diam ipsum a diam. Cras eu tincidunt arcu, vitae rhoncus
-            purus. Vestibulum fermentum consectetur porttitor. Suspendisse imperdiet porttitor
-            tortor, eget elementum tortor mollis non.
+            Phasellus egestas elit quis convallis vehicula. Morbi vel luctus lectus, a fringilla ex.
+            Etiam in tellus quis ipsum commodo lobortis. Etiam vulputate, justo quis porttitor
+            dapibus, elit lorem dictum dolor, vel suscipit libero mi in leo. Integer commodo
+            vehicula dolor. Nunc faucibus augue a orci non.
+          </p>
+        </div>
+      </section>
+
+      <section id="section4" data-nav="Section 4">
+        <div class="landing__container">
+          <h2>Section 4</h2>
+          <p>
+            Quisque molestie urna et consectetur pretium. Duis vel quam consectetur lacus placerat
+            tristique et at lacus. Duis tincidunt egestas elit id pharetra. Aenean dui nunc, dapibus
+            sed ornare non, ornare et eros. Maecenas ornare nunc tellus, in scelerisque elit dapibus
+            ac. Duis hendrerit, elit ut tincidunt viverra, sem libero efficitur nulla, sit amet
+            rutrum justo urna nec turpis. Duis lobortis sit amet turpis non ornare. Nullam ligula
+            nulla, eleifend at tortor id, elementum imperdiet nunc. Morbi hendrerit, turpis eu
+            commodo commodo, sem quam hendrerit neque, et dapibus orci justo eu odio. Nunc quam ex,
+            convallis non placerat vel, gravida id urna. Interdum et malesuada fames ac ante ipsum
+            turpis.
+          </p>
+          <p>
+            Curabitur cursus gravida urna. Duis ultrices pretium lobortis. Praesent vehicula dolor
+            eget pretium eleifend. Nam eget diam a felis hendrerit mattis sed eu odio. Fusce
+            fringilla ante et nisl rutrum, sed laoreet urna feugiat. Cras accumsan faucibus
+            fermentum. Donec vel ipsum varius felis turpis duis.
           </p>
         </div>
       </section>
@@ -99,6 +143,7 @@
     <footer class="page__footer">
       <p>&copy Udacity / Changes by Etienne Richard</p>
     </footer>
+    <script type="module" src="./js/mock-data.js"></script>
     <script type="module" src="./js/app.js"></script>
   </body>
 </html>

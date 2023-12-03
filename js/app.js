@@ -1,4 +1,5 @@
 // @ts-check
+import { appendSection, removeSection } from './mock-data.js';
 
 /**
  * Manipulating the DOM exercise.
@@ -11,6 +12,44 @@
  * JS Version: ES2015/ES6
  *
  * JS Standard: ESlint
+ */
+
+/*------------------------------------------------------------------------------------------------
+ * Settings widget
+ *------------------------------------------------------------------------------------------------*/
+
+/*
+ * Begin main functions.
+ */
+
+function setupSettingsWidget() {
+  // Section widget: we directly add listeners.
+
+  // Handle click on button to append section.
+  const appendSectionButton = document.getElementById('section-append');
+  // @ts-ignore: ... is possibly 'null'.
+  appendSectionButton.addEventListener('click', _ => {
+    const section = appendSection();
+    if (section !== null) {
+      // Rebuild the navigation bar.
+      buildNav();
+    }
+  });
+
+  // Handle click on button to remove section.
+  const removeSectionButton = document.getElementById('section-remove');
+  // @ts-ignore: ... is possibly 'null'.
+  removeSectionButton.addEventListener('click', _ => {
+    const section = removeSection();
+    if (section !== null) {
+      // Rebuild the navigation bar.
+      buildNav();
+    }
+  });
+}
+
+/*
+ * End main functions.
  */
 
 /*------------------------------------------------------------------------------------------------
@@ -87,6 +126,11 @@ function doSetup() {
   // @ts-ignore: ... is possibly 'null'.
   const navBarList = document.querySelector('#navbar__list');
   navBarList.addEventListener('click', event => scrollToSection(event));
+
+  // Settings widget.
+
+  // Set up the settings widget.
+  setupSettingsWidget();
 }
 
 /**
