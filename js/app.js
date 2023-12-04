@@ -77,7 +77,7 @@ function scrollToTop(_event) {
  */
 
 /*------------------------------------------------------------------------------------------------
- * Active Section Approach 1 - Scroll event and active line
+ * Active Section Approach 1 - Scroll event and active band
  *------------------------------------------------------------------------------------------------*/
 
 // NOTE: See README.md for details.
